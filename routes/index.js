@@ -4,7 +4,7 @@ const path = require('path');
 
 router.get('/api', (req, res) => {
   res.status(200).json({ message: 'Hello from server!' });
-})
+});
 
 router.use(express.static(path.join(__dirname, '../client/build')));
 
