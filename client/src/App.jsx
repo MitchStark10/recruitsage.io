@@ -25,14 +25,12 @@ const AppContent = () => {
     if (!file) {
       return;
     }
+    const formData = new FormData()
+    formData.append('upload', file);
 
     const response = await fetch("/api/upload", {
       method: "POST",
-      body: file,
-      headers: {
-        "content-type": file.type,
-        "content-length": `${file.size}`,
-      },
+      body: formData
     });
 
     if (response.ok) {

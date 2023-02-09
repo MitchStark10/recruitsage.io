@@ -15,18 +15,6 @@ app.set('view engine', 'ejs');
 
 app.use(logger('dev'));
 
-// Custom middleware to write raw body to req.rawBody
-app.use(function (req, res, next) {
-  var data = "";
-  req.on('data', function (chunk) { data += chunk })
-  req.on('end', function () {
-    req.rawBody = data;
-    next();
-  })
-});
-
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
